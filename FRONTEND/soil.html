@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Soil Indices</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <style>
+        #background-container {
+            background-image: url('https://source.unsplash.com/random/1920x1080/?soil');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #water-indices-container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        #water-indices {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .index-item {
+            margin: 10px;
+        }
+
+        .index-item a {
+            display: block;
+            padding: 15px 30px;
+            background-color: #5ca3ef;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .index-item a:hover {
+            background-color: #0056b3;
+        }
+
+        /* Footer CSS */
+        #footer {
+            background: rgb(38, 64, 74);
+            padding: 0px 0px 30px;
+            color: rgb(255, 255, 255);
+            font-size: 14px;
+        }
+
+        *, ::after, ::before {
+            box-sizing: border-box;
+        }
+
+        footer {
+            display: block;
+            unicode-bidi: isolate;
+        }
+
+        body {
+            font-family: "Open Sans", sans-serif;
+            color: rgb(0, 0, 0);
+            
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between position-relative">
+
+            <div class="logo">
+                <h1 class="text-light"><a href="index1.html"><span>Indices</span></a></h1>
+                <!-- Uncomment below if you prefer to use an image logo -->
+                <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+            </div>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto " href="#hero">Home</a></li>
+                    <li><a class="nav-link scrollto" href="#about">About Us</a></li>
+                    <li><a class="nav-link scrollto" href="#Indices">Indices</a></li>
+                    <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
+        </div>
+    </header><!-- End Header -->
+
+    <main id="main">
+
+        <!-- ======= Breadcrumbs Section ======= -->
+        <section class="breadcrumbs">
+            <div class="container">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2><strong>Soil Indices</strong></h2>
+                    <ol>
+                        <li><a href="index1.html">Home</a></li>
+                        <li> Soil Indices</li>
+                    </ol>
+                </div>
+
+            </div>
+        </section><!-- End Breadcrumbs Section -->
+
+        <div id="background-container">
+            <div id="water-indices-container">
+              <ul id="water-indices">
+                <li class="index-item"><a href="SAVI.html" style="position: relative; display: inline-block;">SAVI<span class="pop-up">Soil Adjusted Vegetation Index</span></a></li>
+                <li class="index-item"><a href="DBSI.html" style="position: relative; display: inline-block;">DBSI<span class="pop-up">Dry Bare Soil Index</span></a></li>
+                <li class="index-item"><a href="BSI.html" style="position: relative; display: inline-block;">BSI<span class="pop-up">Bare Soil Index</span></a></li>
+                <li class="index-item"><a href="HBSI.html" style="position: relative; display: inline-block;">HBSI<span class="pop-up">Hyperspectral Bare Soil Index</span></a></li>
+                <li class="index-item"><a href="NDSI.html" style="position: relative; display: inline-block;">NDSI<span class="pop-up">Normalised Difference Soil Index</span></a></li>
+            </ul>
+            
+
+            <style>
+              .pop-up {
+                  visibility: hidden;
+                  width: 120px;
+                  background-color: #8fbbfc;
+                  color: #fff;
+                  text-align: center;
+                  border-radius: 6px;
+                  padding: 8px 0;
+                  position: absolute;
+                  z-index: 1;
+                  bottom: 125%;
+                  left: 50%;
+                  margin-left: -60px;
+                  opacity: 0;
+                  transition: opacity 0.3s;
+              }
+          
+              .index-item:hover .pop-up {
+                  visibility: visible;
+                  opacity: 1;
+              }
+          </style>
+
+            </div>
+        </div>
+
+    </main><!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="footer-info">
+                            <h3>Indices</h3>
+                            <p class="pb-3"><em></em></p>
+                            <p>
+                                Nashik <br>
+                                Maharashtra, India<br><br>
+                                <strong>Phone:</strong> +91 9874700736<br>
+                                <strong>Email:</strong> siddharthbagaw7@gmail.com<br>
+                            </p>
+                            <div class="social-links mt-3">
+                                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-6 footer-links">
+                        <h4>Useful Links</h4>
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                        </ul>
+                    </div>
+
+                   
+                    <div class="col-lg-4 col-md-6 footer-newsletter">
+                        <h4>Our Newsletter</h4>
+                        <p></p>
+                        <form action="" method="post">
+                            <input type="email" name="email"><input type="submit" value="Subscribe">
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="copyright">
+                &copy; Copyright <strong><span>Indices</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/squadfree-free-bootstrap-template-creative/ -->
+                Designed by <a href="">Siddharth Bagaw</a>
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

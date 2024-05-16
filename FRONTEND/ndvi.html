@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Water Related Indices</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Squadfree
+  * Template URL: https://bootstrapmade.com/squadfree-free-bootstrap-template-creative/
+  * Updated: Mar 17 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+
+
+  
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center justify-content-between position-relative">
+
+      <div class="logo">
+        <h1 class="text-light"><a href="index1.html"><span>Indices</span></a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto " href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About Us</a></li>
+          <li><a class="nav-link scrollto" href="#Indices">Indices</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs Section ======= -->  
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Normalized Difference Vegetation Index </h2>
+          <ol>
+            <li><a href="index1.html">Home</a></li>
+            <li>soil related Indices</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs Section -->
+    <style>/* Style for the container */
+      .container {
+        max-width: 600px; /* Adjust container width as needed */
+        margin: 0 auto; /* Center the container */
+        padding: 20px; /* Add some padding */
+        border: 1px solid #ccc; /* Add border for visualization */
+        border-radius: 5px; /* Add border radius for rounded corners */
+      }
+      
+      /* Style for headings */
+      #uploadContainer h5 {
+        margin-top: 10px; /* Add space above each heading */
+      }
+      
+      /* Style for file inputs */
+      #uploadContainer input[type="file"] {
+        margin-bottom: 10px; /* Add space below each input */
+      }
+      
+      /* Style for the calculate button */
+      #uploadContainer button {
+        display: block; /* Make the button a block element */
+        width: 100%; /* Make the button fill the container width */
+        padding: 10px; /* Add padding */
+        background-color: #c3641c; /* Button background color */
+        color: #fff; /* Button text color */
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      
+      /* Button hover effect */
+      #uploadContainer button:hover {
+        background-color: #c3641c; /* Button background color on hover */
+      }
+      
+      /* Style for the progress bar */
+      #progressBar {
+        width: 100%; /* Make the progress bar fill the container width */
+        margin-top: 10px; /* Add space above the progress bar */
+      }
+      
+      /* Style for the result section */
+      #resultSection {
+        margin-top: 20px; /* Add space above the result section */
+      }
+      
+      /* Style for the result section headings */
+      #resultSection h3 {
+        margin-top: 0; /* Remove default margin */
+      }
+      
+      /* Style for the result image */
+      #Turbidity_IndexImage {
+        max-width: 100%; /* Make sure the image fits within its container */
+        margin-top: 10px; /* Add space above the image */
+      }
+      
+      /* Style for the result section buttons */
+      #resultSection button {
+        margin-top: 10px; /* Add space above each button */
+      }
+      </style>
+    <section class="inner-page">
+      <div class="container">
+        <div id="uploadContainer">
+          <h5>Upload Red Band</h5>
+          <input type="file" id="redBandInput" accept=".tif,.tiff" required>
+          <h5>Upload NIR Band</h5>
+          <input type="file" id="nirBandInput" accept=".tif,.tiff" required>
+          <button onclick="ndvi_api()">Calculate</button>
+        </div>
+        
+        <progress id="progressBar" value="0" max="100" style="display: none;"></progress>
+        <div id="resultSection" style="display: none;">
+            <h3>Calculated NDVI:</h3>
+            <img id="ndviImage" src="#" alt="NDVI Image">
+            <button id="showBtn" onclick="showOutput()">Show</button>
+            <button id="downloadBtn" onclick="downloadOutput()">Download</button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript logic
+        function register() {
+      document.getElementById('registerModal').style.display = 'block';
+    }
+
+    function registerUser() {
+      // Your registration logic here
+      // For demo purpose, just closing the modal
+      document.getElementById('registerModal').style.display = 'none';
+    }
+
+    function calculation() {
+      document.getElementById('calculationPage').style.display = 'block';
+    }
+
+      
+    function ndvi_api() {
+  const redBandFile = document.getElementById('redBandInput').files[0];
+  const nirBandFile = document.getElementById('nirBandInput').files[0];
+
+  // Check if both files are uploaded
+  if (redBandFile && nirBandFile) {
+    const formData = new FormData();
+    formData.append('red_band', redBandFile);
+    formData.append('nir_band', nirBandFile);
+
+    const backendUrl = "http://localhost:8000"; // Backend URL
+
+    fetch(backendUrl + '/ndvi_api', {
+      method: 'POST',
+      body: formData,
+      mode: 'no-cors',
+      timeout: 10000
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      if (data.error) {
+        console.error('Error:', data.error);
+      } else {
+        // Handle successful response
+        const ndviImageData = data.ndvi_data; // Assuming the backend returns the NDVI data
+      // Perform further actions with the NDVI data, such as displaying it on the UI
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      // Handle network errors or other exceptions
+      alert('Failed to calculate NDVI. Check network connection, server status, or try again later.');
+    });
+  } else {
+    alert("Please upload both Red and NIR band images.");
+  }
+}
+
+        // Assuming your actual calculateNDVI function is defined elsewhere
+    function calculateNDVI(data) {
+      // Implement your NDVI calculation logic here, ensuring a proper base case
+      // to terminate recursion when there's no more data to process.
+      // ...
+    }
+
+    function showOutput() {
+      // Logic to show output (e.g., display image)
+      // For demo purpose, just setting a sample image source
+      document.getElementById('ndviImage').src = 'path/to/ndvi_image.jpg'; // Replace with actual path
+    }
+
+    function downloadOutput() {
+      // Logic to download output (e.g., initiate download)
+    }
+    </script>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-info">
+              <h3>Indices</h3>
+              <p class="pb-3"><em>.</em></p>
+              <p>
+                Nashik <br>
+                Maharashtra, India<br><br>
+                <strong>Phone:</strong> +1 5589 55488 55<br>
+                <strong>Email:</strong> info@example.com<br>
+              </p>
+              <div class="social-links mt-3">
+                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Our Newsletter</h4>
+            <p></p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
+            </form>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Indices</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/squadfree-free-bootstrap-template-creative/ -->
+      
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

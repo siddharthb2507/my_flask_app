@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Water Related Indices</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <style>
+    /* Provided CSS */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      
+      border-radius: 5px;
+      text-align: justify;
+    }
+
+    #uploadContainer h5 {
+      margin-top: 20px;
+    }
+
+    #uploadContainer input[type="file"] {
+      margin-bottom: 20px;
+    }
+
+    #uploadContainer button {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      background-color: #c3641c;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    #uploadContainer button:hover {
+      background-color: #9c4c18;
+    }
+
+    #gciOutput {
+      margin-top: 20px;
+    }
+
+    #gciOutput button {
+      margin-top: 20px;
+      display: block;
+      padding: 15px;
+      background-color: #c3641c;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #gciOutput button:hover {
+      background-color: #9c4c18;
+    }
+
+    .footer-top {
+      padding: 60px 0;
+      background: #559ce2;
+    }
+
+    .footer-info {
+      margin-bottom: 30px;
+    }
+
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: #777;
+    }
+
+    .footer-links a:hover {
+      color: #c3641c;
+      text-decoration: none;
+    }
+
+    .footer-newsletter form input[type="email"] {
+      padding: 10px 15px;
+      border-radius: 0;
+      border: 1px solid #eee;
+      width: 100%;
+    }
+
+    .footer-newsletter form input[type="submit"] {
+      background-color: #c3641c;
+      color: #fff;
+      border-radius: 0;
+      border: none;
+      padding: 10px 0;
+      width: 100%;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    .footer-newsletter form input[type="submit"]:hover {
+      background-color: #9c4c18;
+    }
+  </style>
+</head>
+
+<body>
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between position-relative">
+      <div class="logo">
+        <h1 class="text-light"><a href="index1.html"><span>Indices</span></a></h1>
+      </div>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About Us</a></li>
+          <li><a class="nav-link scrollto" href="#Indices">Indices</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+    </div>
+  </header><!-- End Header -->
+  <main id="main">
+    <section class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Normalized Difference Water Index</h2>
+          <ol>
+            <li><a href="index1.html">Home</a></li>
+            <li>Water Indices</li>
+          </ol>
+        </div>
+      </div>
+    </section><!-- End Breadcrumbs Section -->
+
+    <section class="inner-page">
+      <div class="container">
+        <div id="uploadContainer">
+          <h5>Select Green Band and NIR Band images:</h5>
+          <label for="greenBandInput">Green Band:</label>
+          <input type="file" id="greenBandInput" accept=".TIF,.TIFF">
+          <br>
+          <label for="nirBandInput">NIR Band:</label>
+          <input type="file" id="nirBandInput" accept=".TIF,.TIFF">
+          <br>
+          <button onclick="calculategci()">Calculate gci</button>
+          <div id="gciOutput"></div>
+        </div>
+      </div>
+
+      <div id="gciOutput">
+        <p id="processingMessage" style="display: none;">Processing...</p>
+      </div>
+      
+      <script>
+        function calculategci() {
+          const greenBand = document.getElementById('greenBandInput').files[0];
+          const nirBand = document.getElementById('nirBandInput').files[0];
+      
+          if (!greenBand || !nirBand || !greenBand.type.match(/image\/tif/) || !nirBand.type.match(/image\/tif/)) {
+            alert("Please select valid TIF files for both green and NIR bands.");
+            return;
+          }
+      
+          const formData = new FormData();
+          formData.append('greenBand', greenBand);
+          formData.append('nirBand', nirBand);
+      
+          // Display "Processing..." message
+          const gciOutput = document.getElementById('gciOutput');
+          gciOutput.innerHTML = '<p>Processing...</p>';
+      
+          fetch('http://127.0.0.1:5000/calculate_gci', {
+              method: 'POST',
+              body: formData
+            })
+            .then(response => response.blob())
+            .then(gciBlob => {
+              const url = URL.createObjectURL(gciBlob);
+              const downloadButton = document.createElement('button');
+              downloadButton.textContent = 'Download gci GeoTIFF';
+              downloadButton.onclick = function () {
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'gci.tif';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+              };
+              // Replace "Processing..." message with download button
+              gciOutput.innerHTML = '';
+              gciOutput.appendChild(downloadButton);
+            })
+            .catch(error => {
+              console.error('Error:', error);
+              gciOutput.innerHTML = '<p>Calculation failed. Please try again.</p>';
+            });
+        }
+      </script>
+
+    </section> 
+    
+    
+    
+  </main><!-- End #main -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-info">
+              <h3>Indices</h3>
+              <p class="pb-3"><em>.</em></p>
+              <p>
+                Nashik <br>
+                Maharashtra, India<br><br>
+                <strong>Phone:</strong> +91 9874700736<br>
+                <strong>Email:</strong> siddharthbagaw7@gmail.com<br>
+              </p>
+              <div class="social-links mt-3">
+                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+          
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Our Newsletter</h4>
+            <p></p>
+            <form action="" method="post">
+              <input type="email" name="email" placeholder="Enter your email"><input type="submit" value="Subscribe">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="cgreenits">
+        &copy; Copyright <strong>Indices</strong>. All Rights Reserved
+      </div>
+    </div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  </footer>
+
+  
+
+  
+  </script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>

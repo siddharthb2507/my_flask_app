@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NDVI Calculator</title>
+</head>
+
+<body>
+    <h1>NDVI Calculator</h1>
+    <input type="file" id="redBandInput" accept=".TIF,.TIFF" />
+    <input type="file" id="nirBandInput" accept=".TIF,.TIFF" />
+    <button onclick="calculateNDVI()">Calculate NDVI</button>
+    <div id="ndviOutput"></div>
+
+    <script>
+        function calculateNDVI() {
+            const redBand = document.getElementById('redBandInput').files[0];
+            const nirBand = document.getElementById('nirBandInput').files[0];
+
+            if (!redBand || !nirBand || !redBand.type.match(/image\/tif/) || !nirBand.type.match(/image\/tif/)) {
+                alert("Please select valid TIF files for both Red and NIR bands.");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('redBand', redBand);
+            formData.append('nirBand', nirBand);
+
+            fetch('http://127.0.0.1:5000/calculate_ndvi', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.blob())
+            .then(ndviBlob => {
+                const url = URL.createObjectURL(ndviBlob);
+                const ndviOutput = document.getElementById('ndviOutput');
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = 'ndvi.tif';
+                link.textContent = 'Download NDVI GeoTIFF';
+                ndviOutput.innerHTML = '';
+                ndviOutput.appendChild(link);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</body>
+</html>
